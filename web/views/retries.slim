@@ -23,7 +23,13 @@ h1 Retries
           td
             a href="#{root_path}queues/#{msg['queue']}" #{msg['queue']}
           td= msg['class']
-          td= display_args(msg['args'])
+          td
+            - if msg['args'].to_s.size > 100
+              = msg['args'].inspect[0..100] + "... "
+              button data-toggle="collapse" data-target="#worker_#{index}" class="btn btn-mini" Show All
+              .collapse[id="worker_#{index}" style="max-width: 750px;"]= msg['args']
+            - else
+              = display_args(msg['args'])
     input.btn.btn-primary type="submit" name="retry" value="Retry Now"
     input.btn.btn-danger type="submit" name="delete" value="Delete"
 - else

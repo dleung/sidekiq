@@ -13,7 +13,7 @@ h1 Retries
         th Queue
         th Worker
         th Args
-      - @retries.each do |(msg, score)|
+      - @retries.each_with_index do |(msg, score), index|
         tr
           td
             input type='checkbox' name='score[]' value='#{score}'

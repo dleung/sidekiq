@@ -12,7 +12,7 @@ h1 Scheduled Jobs
         th Queue
         th Worker
         th Args
-      - @scheduled.each do |(msg, score)|
+      - @scheduled.each_with_index do |(msg, score), index|
         tr
           td
             input type='checkbox' name='score[]' value='#{score}'
